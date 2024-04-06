@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+    margin-left: 2rem;
+    background-color: black;
+}
+
+#titleOfTheGame{
+    font-size: 3rem;
+    text-transform: capitalize;
+    display: block;
+    color: aliceblue;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    justify-self: center;
+    font-family: 'Cormorant SC', serif;
+    height: 10vh;
+    position: relative;
+    background: transparent;
+}
+.Content {
+    position: absolute;
+    top: 0rem;
+    background: transparent;
+    min-width: 98%;
+    min-height: 150vmin;
+    display: flex;
+}
+
+.complete-ss{
+    display: none;
+}
+  
+#background_video{
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: 0;
+}
+
+.orbit{
+  border: 0.22vmin dashed white;
+  opacity: 1;
+  background: transparent;
+  border-radius: 50%;
+  position: absolute;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.alert {
+    width: 50%;
+    padding: 20px;
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    min-height: fit-content;
+}
+
+.closebtn {
+    margin-left: 15px;
+    color: black;
+    font-weight: bold;
+    float: right;
+    font-size: 30px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.closebtn:hover {
+    color: red;
+}
+
+.alert img{
+    width: 30%;
+    height: 40%;
+    margin: 10px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.alert p{
+    font-size: 15px;
+    padding-bottom: 20px;
+    text-align: justify;
+    min-height: fit-content;
+}
+
+.alert h3{
+    text-transform:uppercase;
+    display: block;
+}
+
+.alert h2{
+    text-transform:uppercase;
+    color: red;
+    display: block;
+}
+
+.translate{
+    background-color: rgb(166, 215, 231);
+    font-size: 1rem;
+    color: black;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+}
+.trans1:hover{
+    background: rgb(163, 163, 163);
+    color: white;
+}
+
+#alert1{
+    padding: 10px;
+}

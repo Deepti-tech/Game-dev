@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Procedural Terrain</title>
+  <link rel="stylesheet" type="text/css" href="base.css">
+  <script src="https://github.com/mrdoob/three.js/blob/r112/build/three.module.js"></script>
+</head>
+<body>
+  <div id="explore-section">
+    <div id="target"></div>
+    <div class="stages" id="stages">	
+      <img src="resources/gps.png" alt="Stage">
+    </div>
+    <div class="progress">
+      <div class="progress-done">Launching</div>
+    </div>
+    <div class="title" id="title"><h1>Explore</h1></div>
+    <div class="popup" id="question1">
+      <h3 class="line anim-typewriter">Agent 301, I've heard these bowl-shaped platforms makes the moon even more beautiful than it already is!</h3>
+      <p id="instruct">What are they called?</p>
+      <div class="buttons">
+        <h2 onclick="rightAnswer()" class="start-the-game">CRATERS</h2>
+        <h2 onclick="wrongAnswer()" class="start-the-game">MARIA</h2>
+      </div>
+    </div>
+    <div class="popup"  id="question2" style="display: none;">
+      <h3 class="line anim-typewriter">Where was water found on the moon</h3>
+      <p id="instruct"></p>
+      <div class="buttons">
+        <h2 onclick="rightAnswer2()" class="start-the-game">Shadowed area</h2>
+        <h2 onclick="wrongAnswer2()" class="start-the-game">Sunlit area</h2>
+      </div>
+    </div>
+  </div>
+  
+  <script src="./src/main.js" type="module">
+  </script>
+
+  <script>
+    let answered=0;
+    var  progress = document.querySelector('.progress-done');
+    document.getElementById("explore").onclick = function () {
+        document.getElementById("explore-section").style.display = "flex";
+        document.getElementById("before-explore").style.display = "none";
+    };
+   function rightAnswer(){
+      if(answered==0){
+        document.getElementById("instruct").innerHTML="GOOD WORK!<br>The word crater was adopted from the Greek word for 'vessel' Galileo discoverd that the Moon was not a perfect sphere, but had cup-like depressions. Thus, they were named as craters."
+        answered=1;        
+        document.getElementById("stages").className = "research1-progress";
+        progress.style.opacity = 1;
+        progress.style.width = '83.325%';
+        progress.innerHTML = "Explore"
+      }
+      document.getElementById("question1").style.display = "none";
+      document.getElementById("question2").style.display = "flex";
+    }
+
+    function wrongAnswer(){
+      if(answered==0){
+        document.getElementById("instruct").innerHTML="No...<br>Centuries ago, the dark areas were called 'maria', presumably assuming that the observer would be seeing water oceans. However, telescopic observations showed that the maria are very flat<br>TRY AGAIN!"
+        answered=0;
+      }
+    }
+    function rightAnswer2(){
+        document.getElementById("instruct").innerHTML="GOOD WORK!<br>The word crater was adopted from the Greek word for 'vessel' Galileo discoverd that the Moon was not a perfect sphere, but had cup-like depressions. Thus, they were named as craters."
+        document.getElementById("stages").className = "research2-progress";
+        progress.style.opacity = 1;
+        progress.style.width = '100%';
+        progress.innerHTML = "Explore"
+      document.getElementById("question2").style.display = "none";
+    }
+
+    function wrongAnswer2(){
+        document.getElementById("instruct").innerHTML="No...<br>TRY AGAIN!"
+        answered=0;
+    }
+  </script>
+</body>
+</html>

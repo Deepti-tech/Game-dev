@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Recreate the solar system</title>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/animation.css">
+    <link rel="stylesheet" href="styles/elements.css">
+    <link rel="stylesheet" href="styles/guide.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="javascripts/main.js" defer></script>
+  </head>
+  <style>
+    body{
+        background-image:url("images/background2.png");
+    }
+  </style>
+  <body>
+    <!-- <video autoplay muted loop id="background_video">
+        <source src="stars_bg.mp4" type="video/mp4">
+    </video>    -->
+    <span id="titleOfTheGame">Recreate the solar system</span>
+    <div id="content" class="Content">
+        <div class="draggable-elements" id="draggable-elements">
+            <img src="images/Uranus.png" alt="Uranus" id="uranus" class="draggable" draggable="true">
+            <img src="images/Earth.png" alt="Earth" id="earth" class="draggable" draggable="true">        
+            <img src="images/Jupiter.png" alt="Jupiter" id="jupiter" class="draggable" draggable="true">
+            <img src="images/Saturn.png" alt="Saturn" id="saturn" class="draggable" draggable="true">
+            <img src="images/Venus.png" alt="Venus" id="venus" class="draggable" draggable="true">
+            <img src="images/Mars.png" alt="Mars" id="mars" class="draggable" draggable="true">
+            <img src="images/Neptune.png" alt="Neptune" id="neptune" class="draggable" draggable="true">
+            <img src="images/Mercury.png" alt="Mercury" id="mercury" class="draggable" draggable="true">
+        </div>
+        
+        <section class="droppable-elements" id="droppable-elements">
+            <img src="images/Sun.png" alt="" id="sun">
+            <img src="images/GGBB.png" alt="" id="belt">
+            <div class="orbit" id="neptune1">
+                <div class="droppable" data-draggable-id="neptune"></div> 
+            </div>
+            <div class="orbit" id="uranus1">
+                <div class="droppable" data-draggable-id="uranus" ></div> 
+            </div>
+            <div class="orbit" id="saturn1">
+                <div class="droppable" data-draggable-id="saturn"></div>  
+            </div>
+            <div class="orbit" id="jupiter1">
+                <div class="droppable" data-draggable-id="jupiter" ></div> 
+            </div>
+            <div class="orbit" id="mars1">
+                <div class="droppable" data-draggable-id="mars" ></div> 
+            </div>
+            <div class="orbit" id="earth1">
+                <div class="droppable" data-draggable-id="earth" ></div> 
+            </div>
+            <div class="orbit" id="venus1">
+                <div class="droppable" data-draggable-id="venus"></div>
+            </div>
+            <div class="orbit" id="mercury1">
+                <div class="droppable" data-draggable-id="mercury" ></div> 
+            </div>
+        </section>
+
+        <section class="guide" id="guide">
+            <img id="guide-img" src="cartoon-robot.png" alt="astraunaut"></img>
+                <div class="instructions to-text" id="instruct">
+                    Hello I am Dexter! I will be helping you to recreate the Solar System!
+                </div>
+                <div class="instructions" id="close-up-image" style="display: none;"></div>
+                <button onclick="OKbutton()" id="button">LET'S GO</button>
+                
+            </div>
+            <div class="alert" id="alert" style="display: none;">
+                <span class="closebtn" onclick="closeAlert()">&times;</span>
+                <h3>DID YOU KNOW?</h3>
+                <h2 id="title"></h2>
+                <img src="" alt="Loading....." id="img">
+                <p id="explaination"></p>
+            </div>
+
+            <div class="alert" id="alert1">
+                <div style="padding: 60px;">
+                    <h2 style="margin-bottom: 2rem; margin-top: 0; color:black">CHOOSE A LANGUAGE:</h2>
+                    <select name="" id="" style="padding:10px; border-width:1px;">
+                        <option>ENGLISH</option>
+                        <option>HINDI</option>
+                    </select>
+                    <button class="translate trans1"  onclick="closeAlert()" style="padding:10px">Translate</button>
+                </div>
+            </div>
+            
+        </section> 
+    </div>
+    <!-- <audio autoplay>
+        <source src="dark_matter.mp3" type="audio/mpeg">
+    </audio> -->
+    <script src="javascripts/facts.js"></script>
+    <script src="javascripts/orbits.js"></script>
+    <script src="javascripts/guide.js"></script>
+    <script>
+        document.getElementById("draggable-elements").style.opacity="0.5"
+        document.getElementById("droppable-elements").style.opacity="0.5"
+        document.getElementById("instruct").style.opacity="0.5"
+        document.getElementById("button").style.opacity="0.5"
+        document.getElementById("guide-img").style.opacity="0.5"
+    </script>
+    <script>
+        var lang;
+        window.onload = function(){document.getElementById("alert1").style.display="block"}
+        function dexter_voice(lang, translatedText){
+            let utterance;
+            utterance = new SpeechSynthesisUtterance(translatedText)
+            utterance.lang = lang;
+            speechSynthesis.speak(utterance)
+//    function getVoices() {
+//       let voices = speechSynthesis.getVoices();
+//       if(!voices.length){
+//         // some time the voice will not be initialized so we can call spaek with empty string
+//         // this will initialize the voices 
+//         let utterance = new SpeechSynthesisUtterance("");
+//         speechSynthesis.speak(utterance);
+//         voices = speechSynthesis.getVoices();
+//       }
+//       return voices;
+//     }
+    
+    
+//     function speak(text, voice, rate, pitch, volume) {
+//       // create a SpeechSynthesisUtterance to configure the how text to be spoken 
+//       let speakData = new SpeechSynthesisUtterance();
+//       speakData.volume = volume; // From 0 to 1
+//       speakData.rate = rate; // From 0.1 to 10
+//       speakData.pitch = pitch; // From 0 to 2
+//       speakData.text = text;
+//       speakData.lang = lang;
+//       speakData.voice = voice;
+      
+//       // pass the SpeechSynthesisUtterance to speechSynthesis.speak to start speaking 
+//       speechSynthesis.speak(speakData);
+    
+//     }
+   
+//     if ('speechSynthesis' in window) {
+   
+//       let voices = getVoices();
+//       let rate = 1, pitch = 1, volume = 1;
+//       let text = translatedText;
+
+//       for(let i=0; i<voices.length; i++){
+//         console.log(voices[i])
+//       }
+    
+//       speak(text, voices[5], rate, pitch, volume);
+//     //   for(i=0; i<voices.length; i++){
+//     //     console.log(voices[i])
+//     //   }
+//     //   console.log(voices[5])
+//     }else{
+//       console.log(' Speech Synthesis Not Supported 😞'); 
+//     }
+}
+// dexter_voice();
+
+// function showAlert(){
+//     document.getElementById("alert1").style.display="block"
+// }
+
+// function closeAlert1(){
+//     document.getElementById("alert1").style.display="none"
+// }
+
+
+
+// for (const country_code in countries) {
+//    // let selected;
+//    // if(id==0 && country_code == "en-GB"){
+//    //     selected="selected";
+
+//    // }else if(id==1 && country_code == "hi-IN"){
+//    //     selected="selected";
+//    // }
+//    console.log(countries[country_code]);
+
+//    // let option=`<option value="${country_code}" ${selected}>${countries[country_code]}</option>`;
+//    // tag.insertAdjacentHTML("beforeend",option);
+  
+// }
+
+const formText=document.querySelector("#instruct");
+const toText=document.querySelector(".to-text");
+selectTag=document.querySelector("select");
+translatorBtn=document.querySelector(".translate");
+translateFrom="en",
+
+translatorBtn.addEventListener("click",()=>{
+    document.getElementById("alert1").style.display="none";
+    // translateTo=selectTag.value;
+    if(selectTag.value == "ENGLISH"){
+        translateTo = "en";
+    }
+    else if(selectTag.value == "HINDI"){
+        translateTo = "hi";
+    }
+    let text=document.getElementById("instruct").innerText
+    if(!text)return;
+    // toText.setAttribute("placeholder","Translating..");
+
+    if(translateTo == "hi" || translateTo == "gu"){
+        let api_url="https://api.mymemory.translated.net/get?q="+text+"&langpair="+translateFrom+"|"+translateTo;
+        fetch(api_url).then(res=>res.json()).then(data=>{
+        // console.log(data);
+        // document.getElementById("instruct").innerText=data.responseData.translatedText;
+        translatedText = data.responseData.translatedText;
+        toText.setAttribute("placeholder","Translation");
+        dexter_voice("hi", translatedText)
+        document.getElementById("instruct").innerText = translatedText
+        document.getElementById('button').innerText = 'आइए शुरू करें'
+    });
+    }
+
+    else{
+        dexter_voice("en", text)
+    }
+
+
+});
+
+// var translateFrom="en";
+// var translateTo=selectTag.value;
+
+function translateLang(){
+   const toText=document.querySelector(".to-text");
+
+   let text=document.getElementById("instruct").value
+   if(!text)return;
+//    console.log(text)
+   // toText.setAttribute("placeholder","Translating..");
+
+   // text = OKbutton();
+
+   if(translateTo == "hi" || translateTo == "gu"){
+        let api_url="https://api.mymemory.translated.net/get?q="+text+"&langpair="+translateFrom+"|"+translateTo;
+        fetch(api_url).then(res=>res.json()).then(data=>{
+        // console.log(data);
+        // document.getElementById("instruct").innerText=data.responseData.translatedText;
+        translatedText = data.responseData.translatedText;
+        toText.setAttribute("placeholder","Translation");
+        dexter_voice("hi", translatedText)
+        document.getElementById("instruct").innerHTML = translatedText
+        // console.log(translatedText)
+        document.getElementById('button').innerText = 'आगे बढ़े'
+    });
+    }
+
+    else{
+        dexter_voice("en", text)
+        document.getElementById("instruct").innerHTML = text
+        document.getElementById("button").innerHTML = "NEXT";
+    }
+}
+
+    </script>
+  </body>
+</html>

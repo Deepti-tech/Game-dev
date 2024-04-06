@@ -1,0 +1,70 @@
+/*Styling for draggable-elements and droppable-elements*/
+.draggable-elements{
+    border: 2px solid white;
+    background-color: rgba(250, 248, 248,0.75);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 20px;
+    margin-left: 2rem;
+    margin-top: 2rem;
+    height: fit-content;
+    width: 13.5rem;
+}
+
+.draggable{
+    margin: -1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: grab;
+    transition: opacity 0.2s;
+}
+.draggable.dragged{
+    user-select: none;
+    opacity: 1;
+}
+
+.draggable.dragged:hover{
+    opacity: 0.1;
+}
+
+.droppable-elements{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    float: center;
+    width: 100%;
+    top: 5rem;
+}
+
+.droppable{
+    position: relative;
+    margin: auto;
+    margin-top: -1rem;
+    top: 0;   left: 0;   right: 0;   bottom: 0;
+    height: 3.5rem;
+    width: 3.5rem;
+    border-radius: 100%;
+    background-color: transparent;
+    border: 2px white solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: border-width 0.2s, transform 0.2s, background-color 0.4s;
+} 
+
+.droppable.droppable-hover{
+    border-width: 3px;
+    transform: scale(1.1);
+}
+
+.droppable.dropped{
+    border-width: 0px;
+    color: white;
+}
+
+.droppable.dropped img{
+    pointer-events: none;
+}

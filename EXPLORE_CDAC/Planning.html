@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Explore Moon</title>
+    <link rel="stylesheet" href="styles/all.css" />
+    <script src="scripts/planning.js" type="module"></script>
+    <script src="scripts/src/yuka.min.js"></script>
+  </head>
+  <body>
+    <!-- <audio autoplay>
+      <source
+        src="edge-of-darkness-dark-cinematic-film-score.mp3"
+        type="audio/mpeg"
+      />
+    </audio> -->
+    <div class="stages" id="stages">	
+      <img src="img/gps.png" alt="Stage">
+    </div>
+    <div class="progress">
+      <div class="progress-done">
+      </div>
+    </div>
+    <div class="title" id="title"><h1>Planning</h1></div>
+    <div class="popup">
+      <h3 class="line anim-typewriter">What is the target pole for landing on moon?</h3>
+      <p id="instruct">Click at the correct target pole</p>
+      <h2 id="next-stage">NEXT</h2>
+    </div>
+    <canvas id="canvas"></canvas>
+  </body>
+  <script>
+    document.getElementById("next-stage").onclick = function () {
+        location.href = "../EXPLORE_CDAC/Launching/Launching.html";
+    };
+</script>
+</html>

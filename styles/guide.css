@@ -1,0 +1,69 @@
+/*Styling for the guide*/
+.guide{
+    display: flex;
+    float: center;
+    flex-direction: column;
+    width: 15%;
+    height: 20%;
+    background: transparent;
+    margin: 3rem;
+    margin-right: 1rem;
+    border-radius: 20px;
+    color: black;
+    font-weight: 800;
+}
+
+.guide div{
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 0;
+}
+
+.guide img{
+    width: 16rem;
+    height: 16rem;
+}
+
+.guide button,#nasa{
+    background-color: white;
+    font-size: 1rem;
+    color: black;
+    padding: 0.75rem;
+    margin: 1rem;
+    width: 80%;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    float: right;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.guide button:hover{
+    background-color: grey;
+    color: white;
+}
+
+.instructions{
+    background-color:#139AAC; 
+    color: azure;  
+    padding: 1.2rem;
+    border-radius: 10px;
+    border: 3px solid white;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#close-up-image img{
+    height:100%; width:100%;
+}
+#nasa{
+    color:#139AAC;
+}
+#nasa:hover{
+    background-color: grey;
+    color: white;
+}

@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400;500;600&family=Uncial+Antiqua&display=swap');
+html,
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+}
+
+.title {
+    /* font-family: 'Cormorant SC', serif; */
+    /* font-family: 'Edu TAS Beginner', cursive; */
+    font-family: 'Uncial Antiqua', cursive;
+    font-weight: 400;
+    font-size: 5rem;
+    margin-top: 15%;
+    color: aliceblue;
+    position: absolute;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+}
+.animate-title{
+    font-family: 'Uncial Antiqua', cursive;
+    font-weight: lighter;
+    position: absolute;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    transition: 1s ease 0.3s;
+}
+
+.popup {
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    background: rgba(178, 212, 240, 0.2);
+    color: rgb(255, 255, 255);
+    margin: 1rem 4rem 1rem 3rem;
+    right: 0px;
+    bottom: 0px;
+    min-height: fit-content;
+    width: 35%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 1rem;
+    border-radius: 20px;
+    height: calc(100vh-8em);
+}
+
+.line{
+    position: relative;
+    width: 100%;
+    border-right: 2px solid white;
+    white-space: nowrap;
+    overflow: hidden;
+    transform: translateY(-50%);
+    font-weight: bolder;
+}
+
+.anim-typewriter{
+    animation: typewriter 10s steps(40) 1s 1 normal both,
+    blinkTextCursor 500ms steps(40) infinite normal;
+
+}
+
+@keyframes typewriter{
+    from{
+        width: 0;
+    }
+    to{
+        width: 100%;
+    }
+}
+
+@keyframes blinkTextCursor{
+    from{
+        border-right-color: rgba(255, 255, 255, 1);
+    }
+    to{
+        border-right-color: transparent;
+    }
+}
+
+h2{
+    border: 2px solid white;
+    border-radius: 10px;
+    color:white;
+    width: fit-content;
+    padding: 10px;
+    display: none;
+}
+h2:hover{
+    cursor: pointer; 
+    background-color: #139AAC; 
+    color: azure;        
+}
+
+.stages{
+	position: absolute;
+	margin: 5px 10px 0 20px;
+}
+
+.planning-progress{
+    position:absolute;
+    margin-top: 5px;
+    margin-left: 100px;
+    transition: 1s ease 0.3s;
+}
+
+.progress {
+	background-color: #d8d8d8;
+	border-radius: 20px;
+	position: absolute;
+	margin: 30px 0 0 20px;
+	height: 25px;
+	width: 300px;
+}
+
+.progress-done {
+	background: linear-gradient(to left, #523cdf, #72c0ff);
+	border-radius: 20px;
+	color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%;
+	width: 0;
+	opacity: 1;
+	transition: 1s ease 0.3s;
+}
