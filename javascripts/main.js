@@ -419,7 +419,7 @@ function drop(event) {
          document.getElementById("instruct").className = "complete-ss";
          document.getElementById("button").innerHTML = "NEXT GAME";
          document.getElementById("button").onclick = function () {
-            location.href = "../EXPLORE_CDAC/index.html";
+            location.href = "../../EXPLORE_CDAC/index.html";
         };
       }
    }
