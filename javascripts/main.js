@@ -417,6 +417,7 @@ function drop(event) {
       if(i===8){
          document.getElementById("draggable-elements").className = "complete-ss";
          document.getElementById("instruct").innerHTML = "Pay attention to the comparitive sizes and speeds of the planets ";
+         document.getElementById("button").innerHTML = "NEXT LEVEL";
          document.getElementById("button").onclick = function () {
             location.href = "./EXPLORE_CDAC/index.html";
         };
