@@ -64,7 +64,6 @@ body {
 .anim-typewriter{
     animation: typewriter 10s steps(40) 1s 1 normal both,
     blinkTextCursor 500ms steps(40) infinite normal;
-
 }
 
 @keyframes typewriter{

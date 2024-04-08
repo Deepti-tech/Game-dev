@@ -2,6 +2,7 @@
 
 body{
   overflow: hidden;
+  
 }
 
 #before-explore{
@@ -76,6 +77,7 @@ body {
   margin: 0;
   padding: 0;
   overscroll-behavior: none;
+  cursor: pointer;
 }
 
 .popup {

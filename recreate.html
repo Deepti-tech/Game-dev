@@ -24,6 +24,7 @@
     <span id="titleOfTheGame">Recreate the solar system</span>
     <div id="content" class="Content">
         <div class="draggable-elements" id="draggable-elements">
+            <span style="font-size:x-large;">Planets</span>
             <img src="images/Uranus.png" alt="Uranus" id="uranus" class="draggable" draggable="true">
             <img src="images/Earth.png" alt="Earth" id="earth" class="draggable" draggable="true">        
             <img src="images/Jupiter.png" alt="Jupiter" id="jupiter" class="draggable" draggable="true">
@@ -64,7 +65,7 @@
         </section>
 
         <section class="guide" id="guide">
-            <img id="guide-img" src="cartoon-robot.png" alt="astraunaut"></img>
+            <img id="guide-img" src="cartoon-robot.png" alt="astraunaut">
                 <div class="instructions to-text" id="instruct">
                     Hello I am Dexter! I will be helping you to recreate the Solar System!
                 </div>
@@ -90,6 +91,18 @@
                     <button class="translate trans1"  onclick="closeAlert()" style="padding:10px">Translate</button>
                 </div>
             </div>
+            <div class="alert" id="alert2" style="display:none">
+                <div style="padding: 60px;">
+                    <h2 style="margin-bottom: 2rem; margin-top: 0; color:black">INSTRUCTIONS:</h2>
+                    <span>
+                        I'll give you some cues, read them and guess a planet.
+                        To your extreme left are the planets in a random order, drag a planet that best fits the cue.
+                        Drop them in the orbit, according the second cue I give.
+                    </span>
+                    <br><br>
+                    <button class="translate trans1"  onclick="closeAlert()" style="padding:10px; ">PLAY</button>
+                </div>
+            </div>
             
         </section> 
     </div>
@@ -107,6 +120,10 @@
         document.getElementById("guide-img").style.opacity="0.5"
     </script>
     <script>
+        function changeAlert(){
+            document.getElementById("alert1").style.display = "none"
+            document.getElementById("alert2").style.display = "flex"
+        }
         var lang;
         window.onload = function(){document.getElementById("alert1").style.display="block"}
         function dexter_voice(lang, translatedText){
@@ -114,79 +131,7 @@
             utterance = new SpeechSynthesisUtterance(translatedText)
             utterance.lang = lang;
             speechSynthesis.speak(utterance)
-//    function getVoices() {
-//       let voices = speechSynthesis.getVoices();
-//       if(!voices.length){
-//         // some time the voice will not be initialized so we can call spaek with empty string
-//         // this will initialize the voices 
-//         let utterance = new SpeechSynthesisUtterance("");
-//         speechSynthesis.speak(utterance);
-//         voices = speechSynthesis.getVoices();
-//       }
-//       return voices;
-//     }
-    
-    
-//     function speak(text, voice, rate, pitch, volume) {
-//       // create a SpeechSynthesisUtterance to configure the how text to be spoken 
-//       let speakData = new SpeechSynthesisUtterance();
-//       speakData.volume = volume; // From 0 to 1
-//       speakData.rate = rate; // From 0.1 to 10
-//       speakData.pitch = pitch; // From 0 to 2
-//       speakData.text = text;
-//       speakData.lang = lang;
-//       speakData.voice = voice;
-      
-//       // pass the SpeechSynthesisUtterance to speechSynthesis.speak to start speaking 
-//       speechSynthesis.speak(speakData);
-    
-//     }
-   
-//     if ('speechSynthesis' in window) {
-   
-//       let voices = getVoices();
-//       let rate = 1, pitch = 1, volume = 1;
-//       let text = translatedText;
-
-//       for(let i=0; i<voices.length; i++){
-//         console.log(voices[i])
-//       }
-    
-//       speak(text, voices[5], rate, pitch, volume);
-//     //   for(i=0; i<voices.length; i++){
-//     //     console.log(voices[i])
-//     //   }
-//     //   console.log(voices[5])
-//     }else{
-//       console.log(' Speech Synthesis Not Supported 😞'); 
-//     }
 }
-// dexter_voice();
-
-// function showAlert(){
-//     document.getElementById("alert1").style.display="block"
-// }
-
-// function closeAlert1(){
-//     document.getElementById("alert1").style.display="none"
-// }
-
-
-
-// for (const country_code in countries) {
-//    // let selected;
-//    // if(id==0 && country_code == "en-GB"){
-//    //     selected="selected";
-
-//    // }else if(id==1 && country_code == "hi-IN"){
-//    //     selected="selected";
-//    // }
-//    console.log(countries[country_code]);
-
-//    // let option=`<option value="${country_code}" ${selected}>${countries[country_code]}</option>`;
-//    // tag.insertAdjacentHTML("beforeend",option);
-  
-// }
 
 const formText=document.querySelector("#instruct");
 const toText=document.querySelector(".to-text");
@@ -205,13 +150,10 @@ translatorBtn.addEventListener("click",()=>{
     }
     let text=document.getElementById("instruct").innerText
     if(!text)return;
-    // toText.setAttribute("placeholder","Translating..");
 
     if(translateTo == "hi" || translateTo == "gu"){
         let api_url="https://api.mymemory.translated.net/get?q="+text+"&langpair="+translateFrom+"|"+translateTo;
         fetch(api_url).then(res=>res.json()).then(data=>{
-        // console.log(data);
-        // document.getElementById("instruct").innerText=data.responseData.translatedText;
         translatedText = data.responseData.translatedText;
         toText.setAttribute("placeholder","Translation");
         dexter_voice("hi", translatedText)
@@ -227,29 +169,19 @@ translatorBtn.addEventListener("click",()=>{
 
 });
 
-// var translateFrom="en";
-// var translateTo=selectTag.value;
-
 function translateLang(){
    const toText=document.querySelector(".to-text");
 
    let text=document.getElementById("instruct").value
    if(!text)return;
-//    console.log(text)
-   // toText.setAttribute("placeholder","Translating..");
-
-   // text = OKbutton();
 
    if(translateTo == "hi" || translateTo == "gu"){
         let api_url="https://api.mymemory.translated.net/get?q="+text+"&langpair="+translateFrom+"|"+translateTo;
         fetch(api_url).then(res=>res.json()).then(data=>{
-        // console.log(data);
-        // document.getElementById("instruct").innerText=data.responseData.translatedText;
         translatedText = data.responseData.translatedText;
         toText.setAttribute("placeholder","Translation");
         dexter_voice("hi", translatedText)
         document.getElementById("instruct").innerHTML = translatedText
-        // console.log(translatedText)
         document.getElementById('button').innerText = 'आगे बढ़े'
     });
     }
