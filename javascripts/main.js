@@ -416,8 +416,7 @@ function drop(event) {
       document.getElementById("button").value = nextPlanet = arr[i];
       if(i===8){
          document.getElementById("draggable-elements").className = "complete-ss";
-         document.getElementById("instruct").className = "complete-ss";
-         document.getElementById("button").innerHTML = "NEXT GAME";
+         document.getElementById("instruct").innerHTML = "Pay attention to the comparitive sizes and speeds of the planets ";
          document.getElementById("button").onclick = function () {
             location.href = "./EXPLORE_CDAC/index.html";
         };
